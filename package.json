@@ -8,5 +8,7 @@
   },
   "author": "F-Hamid",
   "license": "ISC",
-  "devDependencies": {}
+  "dependencies": {
+    "react-icons": "^4.6.0"
+  }
 }

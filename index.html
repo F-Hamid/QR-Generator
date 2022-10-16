@@ -5,6 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="/dist//output.css" rel="stylesheet" />
+    <!-- fontWsome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+    />
     <script src="https://cdn.tailwindcss.com"></script>
     <title>QR Generator</title>
     <style>
@@ -59,7 +64,8 @@
   <body class="">
     <main class="w-screen h-screen center flex-row p-72">
       <form
-        class="w-[35%] h-full p-16 center border-cyan-500 border-2 border-r-0"
+        id="form"
+        class="w-[45%] h-full p-16 center border-cyan-500 border-2 border-r-0"
       >
         <h1 class="text-3xl font-bold mb-8 md:text-4xl">QR Code Generator</h1>
         <p class="mb-4 text-lg text-center">
@@ -67,7 +73,7 @@
           <br />
           Enter your URL below to generate a QR Code and download the image.
         </p>
-        <div class="flex shadow-sm hover:shadow-lg m-8">
+        <div class="flex w-full shadow-sm hover:shadow-lg m-8">
           <span
             class="inline-flex items-center px-3 text-2xl text-gray-900 bg-blue-500 rounded-l-md border border-r-0 border-gray-300 dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600"
           >
@@ -79,16 +85,23 @@
             class="w-[35rem] h-16 text-2xl rounded-none rounded-r-lg bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 border-gray-300 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             placeholder="URL"
           />
+          <button
+            id="delete"
+            type="button"
+            class="inline-flex items-center px-3 text-2xl text-gray-900 bg-red-500 rounded-r-md border border-l-0 border-gray-300 dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600"
+          >
+            <i class="fa-solid fa-delete-left text-[#eee]"></i>
+          </button>
         </div>
         <button
-          type="button"
+          type="submit"
           class="h-16 my-6 w-72 text-[#eee] bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-3xl px-5 py-2.5 text-center mr-2 mb-2"
         >
           GENERATE
         </button>
       </form>
       <div
-        class="qr-container relative w-[30%] h-full center border-blue-500 border-2 border-l-0"
+        class="qr-container relative w-[35%] h-full center border-blue-500 border-2 border-l-0"
       >
         <img
           class="object-fit w-full h-full ml-1"
