@@ -61,10 +61,43 @@
         background-image: url(./images//qr-pic.jpg);
         background-size: cover;
       }
+
+      .lineH {
+        line-height: 2rem;
+      }
+
+      @media screen and (max-width: 1250px) {
+        html {
+          font-size: 58%;
+        }
+      }
+      @media screen and (max-width: 764px) {
+        html {
+          font-size: 55%;
+        }
+      }
+
+      @media screen and (max-width: 520px) {
+        html {
+          font-size: 45%;
+        }
+      }
     </style>
     <script>
       tailwind.config = {
         theme: {
+          screens: {
+            phone: "520px",
+            // => @media (min-width: 520px) { ... }
+            tablet: "640px",
+            // => @media (min-width: 640px) { ... }
+
+            laptop: "1024px",
+            // => @media (min-width: 1024px) { ... }
+
+            desktop: "1280px",
+            // => @media (min-width: 1280px) { ... }
+          },
           extend: {
             colors: {
               clifford: "#da373d",
@@ -78,13 +111,20 @@
     </script>
   </head>
   <body>
-    <main class="w-screen h-screen flex justify-center aligm-center p-72">
+    <main
+      class="w-screen h-screen flex-col flex laptop:flex-row justify-center aligm-center p-4 tablet:p-24 laptop:p-64"
+    >
       <form
         id="form"
-        class="w-full h-full p-16 center border-cyan-500 border-2 border-r-0"
+        class="laptop:w-[55%] w-[90%] h-3/5 tablet:h-full laptop:p-16 p-6 center border-cyan-500 border-2 laptop:border-r-0 border-r-2 mx-auto"
       >
-        <h1 class="text-3xl font-bold mb-8 md:text-4xl">QR Code Generator</h1>
-        <p class="mb-4 text-lg text-center">
+        <img class="w-36 m-4" src="./images/qr-code-scan.png" alt="" />
+        <h1 class="text-3xl font-bold m-4 md:text-5xl text-center">
+          QR Code Generator
+        </h1>
+        <p
+          class="mb-4 mx-auto text-xl text-center tablet:block tablet:w-full hidden w-0 lineH"
+        >
           QR Codes allow users to access your website simply and quickly.
           <br />
           Enter your URL below to generate a QR Code and download the image.
@@ -112,7 +152,7 @@
         <button
           id="generate"
           type="submit"
-          class="h-16 my-6 w-72 text-[#eee] bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-3xl px-5 py-2.5 text-center mr-2 mb-2 shadow-sm hover:shadow-lg"
+          class="h-16 my-6 center phone:w-72 text-[#eee] bg-gradient-to-r from-teal-500 to-cyan-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-3xl px-5 py-2.5 text-center mr-2 mb-2 shadow-sm hover:shadow-lg"
         >
           GENERATE
         </button>
@@ -142,17 +182,13 @@
         </button>
       </form>
       <div
-        class="qr-container bg-img center w-full h-full border-blue-500 border-2 border-l-0"
+        id="qr-container"
+        class="bg-img center w-[90%] laptop:w-[45%] h-[70vh] laptop:h-full border-blue-500 phone:border-2 phone:border-l-0 shadow-lg mx-auto"
       >
         <div
-          id="qrdiv"
-          class="center w-[30rem] h-[30rem] bg-[#eee] z-50 p-8 rounded-lg hide"
-        >
-          <div
-            id="qrcode"
-            class="center w-full h-full -translate-y-[50%]"
-          ></div>
-        </div>
+          id="qrcode"
+          class="center w-[30rem] h-[30rem] bg-[#eee] z-50 p-8 rounded-lg text-4xl text-red-500 font-semibold text-center hide transition-all"
+        ></div>
       </div>
     </main>
   </body>
